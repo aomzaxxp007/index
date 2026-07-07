@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เรซูเม่</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F6F5F1;
+    --ink: #1B1D22;
+    --ink-soft: #565A63;
+    --accent: #3452E1;
+    --accent-soft: #DCE2FB;
+    --line: #DAD8D0;
+    --card: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    padding: 48px 20px;
+  }
+
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    opacity: 0;
+    animation: rise 0.6s ease forwards;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- HEADER ---------- */
+  .head {
+    display: grid;
+    grid-template-columns: 108px 1fr;
+    gap: 26px;
+    align-items: center;
+    padding: 40px 44px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(160deg, var(--accent-soft) 0%, var(--card) 60%);
+  }
+  .photo {
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-align: center;
+    padding: 8px;
+    overflow: hidden;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+    transition: color 0.25s ease;
+    cursor: default;
+  }
+  h1:hover {
+    color: #E23434;
+  }
+  .role {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  /* ---------- BODY ---------- */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+  }
+
+  .side {
+    padding: 36px 32px;
+    border-right: 1px solid var(--line);
+    background: #FAFAF8;
+  }
+  .main {
+    padding: 36px 40px;
+  }
+
+  .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+
+  .side .block { margin-bottom: 28px; }
+  .side .block:last-child { margin-bottom: 0; }
+  .side .value {
+    font-size: 14.5px;
+    margin: 0;
+    color: var(--ink);
+  }
+  .value.placeholder { color: var(--ink-soft); font-style: italic; }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    border-radius: 7px;
+  }
+
+  .main .block { margin-bottom: 30px; }
+  .main .block:last-child { margin-bottom: 0; }
+  .main h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0 0 12px;
+  }
+  .main p.body-text {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .entry {
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+  }
+  .entry:first-of-type { border-top: none; padding-top: 0; }
+  .entry .when {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    margin: 0 0 4px;
+  }
+  .entry h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+  .entry p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  @media (max-width: 620px) {
+    .body { grid-template-columns: 1fr; }
+    .side { border-right: none; border-bottom: 1px solid var(--line); }
+    .head { grid-template-columns: 72px 1fr; padding: 30px 26px; }
+    .photo { width: 72px; height: 72px; }
+    .main, .side { padding: 28px 26px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sheet { animation: none; opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="head">
+    <!-- ✎ ใส่รูปโปรไฟล์: เปลี่ยนเป็น <img src="รูปของคุณ.jpg" alt=""> -->
+    <div class="photo"><img src="1244.jpg" alt="รูปโปรไฟล์"></div>
+    <div>
+      <!-- ✎ แก้ชื่อ-นามสกุล -->
+      <h1>ชื่อ สิทธิชัย มีแก้ว</h1>
+      <!-- ✎ แก้สาขา/ชั้นปี -->
+      <p class="role">นักศึกษาสาขาคอมพิวเตอร์ ชั้นปีที่ 2</p>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="side">
+
+      <div class="block">
+        <p class="label">วันเกิด</p>
+        <!-- ✎ แก้วัน เดือน ปีเกิด -->
+        <p class="value placeholder">16/03/2548</p>
+      </div>
+
+      <div class="block">
+        <p class="label">ที่อยู่</p>
+        <!-- ✎ แก้ที่อยู่ -->
+        <p class="value placeholder">142/8 ต.นามะเขือ อ.ปลาปาก จ.นครพนม</p>
+      </div>
+
+      <div class="block">
+        <p class="label">เบอร์ติดต่อ</p>
+        <!-- ✎ แก้เบอร์โทร -->
+        <p class="value placeholder">0807786075</p>
+      </div>
+
+      <div class="block">
+        <p class="label">อีเมล</p>
+        <!-- ✎ แก้อีเมล -->
+        <p class="value placeholder">jshop8379@gmail.com</p>
+      </div>
+
+      <div class="block">
+        <p class="label">โซเชียล</p>
+        <!-- ✎ แก้ลิงก์โซเชียล -->
+        <p class="value placeholder">FB:Duck Sittichai</p>
+      </div>
+
+      <div class="block">
+        <p class="label">การศึกษา</p>
+        <!-- ✎ แก้ชื่อมหาวิทยาลัย -->
+        <p class="value placeholder">มหาวิทยาลัยนครพนม</p>
+      </div>
+
+    </div>
+
+    <div class="main">
+
+      <div class="block">
+        <h2>เกี่ยวกับฉัน</h2>
+        <!-- ✎ แก้คำอธิบายตัวเองสั้น ๆ -->
+        <p class="body-text placeholder">ผมสนใจด้านการพัฒนาเว็บไซต์</p>
+      </div>
+
+      <div class="block">
+        <h2>สิ่งที่ชอบ</h2>
+        <div class="chip-row">
+          <!-- ✎ แก้/เพิ่มสิ่งที่ชอบเป็น chip ตามรูปแบบนี้ -->
+          <span class="chip"> เล่นเกม</span>
+          <span class="chip"> ฟังเพลง</span>
+          <span class="chip"> ทำงาน</span>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>ทักษะ</h2>
+        <div class="chip-row">
+          <!-- ✎ แก้/เพิ่มทักษะเป็น chip ตามรูปแบบนี้ -->
+          <span class="chip">กวนอาจารย์</span>
+          <span class="chip">กวนเพื่อน </span>
+          <span class="chip">กวนรุ่นพี่ </span>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>ประสบการณ์ / กิจกรรม</h2>
+        <!-- ✎ แก้/เพิ่มรายการกิจกรรมตามรูปแบบนี้ (คัดลอกทั้ง .entry เพื่อเพิ่มรายการใหม่) -->
+        <div class="entry">
+          <p class="when">2568</p>
+          <h3>งานอาจารย์ออฟ / สร้างเว็บแนะนำตัว</h3>
+          <p>ได้เรียนรู้ในการสร้างเว็บ</p>
+        </div>
+        <div class="entry">
+          <p class="when">2567</p>
+          <h3>-- / --</h3>
+          <p>--</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
